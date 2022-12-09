@@ -1,14 +1,10 @@
-import React, {FunctionComponent, useContext, useEffect} from 'react'
-import {Divider, Grid, Typography, useMediaQuery} from '@material-ui/core'
+import React, {FunctionComponent, useContext} from 'react'
+import {Button, Divider, Grid, Typography} from '@material-ui/core'
 import ThwFooterMenuGroup from './ThwFooterMenuGroup'
 import {makeStyles, Theme} from '@material-ui/core/styles'
-import {SanityMenuContainer, SanityTransformHwHomePage} from "../../../common/sanityIo/Types";
-import cmsClient from '../../block-content-ui/cmsClient'
+import {SanityTransformHwHomePage} from "../../../common/sanityIo/Types";
 import TransformHWTheme, {COLORS} from "../../../theme/transform-hw/TransformHWTheme";
-import MediaQueries from "../../../utils/mediaQueries";
 import Logo from "../logo/Logo";
-import {useQuery} from "react-query";
-import mediaQueries from "../../../utils/mediaQueries";
 import PageContext from "../../page-context/PageContext";
 import MediaQueriesContext from "../../media-queries-context/MediaQueriesContext";
 import MailTo from "../../mail-to/MailTo";
@@ -41,15 +37,24 @@ const ThwFooterMenuContainer: FunctionComponent<IProps> = (props: IProps) => {
                 backgroundColor: "rgba(117,117,117,.5)",
                 borderRight: `4px solid ${TransformHWTheme.palette.primary.main}`,
             } : {}}>
-                {
-                    pageContext.pageFooter?.subMenus?.map((menuGroup: any, index: number) => {
-                        return (
-                            <Grid key={index} item xs={6}>
-                                <ThwFooterMenuGroup menuGroup={menuGroup}/>
-                            </Grid>
-                        )
-                    })
-                }
+                <Grid container item>
+
+                    {
+                        pageContext.pageFooter?.subMenus?.map((menuGroup: any, index: number) => {
+                            return (
+                                <Grid key={index} item xs={6}>
+                                    <ThwFooterMenuGroup menuGroup={menuGroup}/>
+                                </Grid>
+                            )
+                        })
+                    }
+                </Grid>
+                <Grid container item>
+                    <Button variant='outlined' color='primary' href={pageContext.page?.googleReviewLink}>
+                        <Typography variant='h6' align='center' color='textSecondary'>Leave us a
+                            review!</Typography>
+                    </Button>
+                </Grid>
             </Grid>
             <Grid item container xs={12} md={4} justifyContent='center'>
                 {pageContext.pageFooter?.logoImageSrc &&
@@ -82,7 +87,8 @@ const ThwFooterMenuContainer: FunctionComponent<IProps> = (props: IProps) => {
                     </Grid>
                     <Grid container item spacing={1} justifyContent='center'>
                         {<Grid item>
-                            <MailTo color={COLORS.DARK_GRAY} email={props.homePage.email??""} subject={"Information Request"} body={""}/>
+                            <MailTo color={COLORS.DARK_GRAY} email={props.homePage.email ?? ""}
+                                    subject={"Information Request"} body={""}/>
                         </Grid>}
                     </Grid>
                 </Grid>
@@ -140,18 +146,21 @@ const ThwFooterMenuContainer: FunctionComponent<IProps> = (props: IProps) => {
                         <Grid item xs={12} style={{
                             borderLeft: "2px solid rgba(117, 117, 117, 0.99)",
                             borderRight: "2px solid rgba(117, 117, 117, 0.99)",
-                            backgroundColor:'rgba(117, 117, 117, 0.5)'
+                            backgroundColor: 'rgba(117, 117, 117, 0.5)'
                         }}>
-                            <Typography gutterBottom variant='subtitle2' color='inherit' style={{fontSize: "14px", fontWeight: "350"}} >
+                            <Typography gutterBottom variant='subtitle2' color='inherit'
+                                        style={{fontSize: "14px", fontWeight: "350"}}>
                                 Transformative Healing & Wellness is a great place for paint & sip, splatter
                                 parties, AA Meetings, Group Counseling, large
                                 meetings or presentations and other
                                 private wellness experiences for groups.
                             </Typography>
-                            <Typography variant='subtitle2' color='inherit'  style={{fontSize: "14px", fontWeight: "400"}} >
+                            <Typography variant='subtitle2' color='inherit'
+                                        style={{fontSize: "14px", fontWeight: "400"}}>
                                 To see what type of event we can create for you, please contact a member of our team:
                             </Typography>
-                            <Typography variant='subtitle1' color='inherit' align='center'>private-parties@transformhw.org.</Typography>
+                            <Typography variant='subtitle1' color='inherit'
+                                        align='center'>private-parties@transformhw.org.</Typography>
                         </Grid>
                     </Grid>
 

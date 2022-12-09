@@ -22,6 +22,11 @@ export default {
             type: 'text',
         },
         {
+            name: 'googleReviewLink',
+            title: 'Google Review Link',
+            type: 'string',
+        },
+        {
             name: 'structuredData',
             title: 'Structured Data(For this page)',
             type: "array",

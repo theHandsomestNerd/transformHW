@@ -1,9 +1,10 @@
-import React, {FunctionComponent, useEffect, useState} from 'react'
+import React, {FunctionComponent, useContext, useEffect, useState} from 'react'
 import {makeStyles, Theme} from '@material-ui/core/styles'
 
 import {Grid, Link, Typography} from '@material-ui/core'
 import TransformHWTheme from "../../../theme/transform-hw/TransformHWTheme";
 import {SanityMenuGroup, SanityMenuItem} from "../../../common/sanityIo/Types";
+import ModalContext from "../../snackbar-context/ModalContext";
 
 export const useStyles = makeStyles((theme: Theme) => ({
     root: {
@@ -42,7 +43,7 @@ export type LandingPagesFooterMenuGroupProps = {
 
 const ThwFooterMenuGroup: FunctionComponent<LandingPagesFooterMenuGroupProps> = ({menuGroup}) => {
     const classes = useStyles(TransformHWTheme)
-
+const modalContext = useContext(ModalContext)
     const [menuGroupContents, setMenuGroupContents] = useState<SanityMenuGroup>()
     const [menuItemContents, setMenuItemContents] = useState<SanityMenuItem>()
 
@@ -66,9 +67,14 @@ const ThwFooterMenuGroup: FunctionComponent<LandingPagesFooterMenuGroupProps> = 
                         menuGroup?.links && menuGroup.links.map( (menuLink:any, index: any) => {
                             return (
                                 <Grid key={index} item>
-                                    <Link href={menuLink.url} className={classes.footerLink}>
+                                    <Link href={menuLink.url} onClick={ (e:any)=>{
+                                        console.log("menuitemconte", menuItemContents)
+                                        if(menuLink.isModalButton) {
+                                            modalContext.openModal && modalContext.openModal(menuLink.modalRef)
+                                        }
+                                    }} className={classes.footerLink}>
                                         <Typography variant="body1" color='textSecondary' noWrap>
-                                            {menuLink.displayText}
+                                           {menuLink.displayText}
                                         </Typography>
                                     </Link>
                                 </Grid>

@@ -29,6 +29,7 @@ export type SanityTransformHwHomePage = {
   headerMenuRef?: SanityRef
   footerMenuRef?: SanityRef
   pageContent?: any
+  googleReviewLink?: string
   servicesAvailable?: ThwServiceItemNoRefType[]
   structuredData?: any
   address?: string

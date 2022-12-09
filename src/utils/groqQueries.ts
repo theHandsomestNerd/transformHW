@@ -69,6 +69,7 @@ const HOMEPAGE = `_type,
           phone,
           description,
           metaImage,
+          googleReviewLink,
           headerMenuRef->{
              ${MENUGROUPCONTAINER}
            },
