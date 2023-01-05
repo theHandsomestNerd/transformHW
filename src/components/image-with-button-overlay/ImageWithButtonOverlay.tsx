@@ -56,7 +56,7 @@ const ImageWIthButtonOverlay: FunctionComponent<IProps> = (props) => {
                     props.source && firebaseAnalyticsClient.ctaClick(props.source, 'image-button', pageContext.analyticsId,)
                 }}
                 variant='text'
-                href={props.learnMoreLink}
+                href={props.ctaButtonLink ?? props.learnMoreLink}
                 style={{padding: 0}}
         >
             <Grid item container direction='column'
