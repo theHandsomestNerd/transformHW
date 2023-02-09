@@ -210,3 +210,11 @@ export type ThwContactUsSectionType = {
     rhsTitle:string,
     formSubmitButtonText: string
 }
+
+
+export type ThwHeadlineSectionType = {
+    name: string
+    contentText: string
+    ctaButtonText: string
+    ctaButtonLink: string
+}

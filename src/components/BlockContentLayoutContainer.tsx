@@ -5,7 +5,7 @@ import sanityClient from '../sanityClient'
 import {blockSerializers} from '../common/sanityIo/BlockContentRenderer'
 import {
     ThwAboutProprietorSectionType,
-    ThwContactUsSectionType,
+    ThwContactUsSectionType, ThwHeadlineSectionType,
     ThwHeroContentSectionType,
     ThwMottoSectionType,
     ThwPositivePsychologySectionType,
@@ -24,6 +24,7 @@ import ThwWhyChooseUsSection from "./transform-hw/ThwWhyChooseUsSection";
 import ThwContactUsSection from "./transform-hw/ThwContactUsSection";
 import {SanityHomePage} from "./block-content-ui/static-pages/cmsStaticPagesClient";
 import ThwServicesEducationPage from "./transform-hw/service-education-page/ThwServiceEducationPage";
+import ThwHeadlineSection from "./transform-hw/ThwHeadlineSection";
 
 export type BlockContentLayoutContainerProps = {
     content?: any,
@@ -157,6 +158,15 @@ const BlockContentLayoutContainer: FunctionComponent<BlockContentLayoutContainer
                                  style={{backgroundColor: TransformHWTheme.palette.background.paper}}>
                         <ThwContactUsSection
                             sectionData={thwCUSection}
+                        />
+                    </Grid>
+                case 'transformHeadlineSection':
+                    const thwHeadlineSection: ThwHeadlineSectionType = columnLayoutContainer
+
+                    return <Grid key={'transformHeadlineSection'} container item xs={12} justifyContent='center'
+                                 style={{backgroundColor: TransformHWTheme.palette.secondary.main}}>
+                        <ThwHeadlineSection
+                            sectionData={thwHeadlineSection}
                         />
                     </Grid>
                 // case 'menuContainer':
